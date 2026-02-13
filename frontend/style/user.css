@@ -1,0 +1,40 @@
+.sidebar {
+    width: 300px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    padding-bottom: 20px;
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../images/background.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar .nav-link {
+    color: white !important;
+    padding: 15px 25px;
+    transition: 0.3s;
+    border-radius: 0;
+}
+
+.sidebar i {
+    margin-right: 10px;
+    width: 20px;
+}
+
+.sidebar .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle highlight */
+    border-left: 5px solid #fff;
+}
+
+.logout-wrapper {
+    margin-top: auto;
+    padding: 20px;
+}
+
+.logout-btn {
+    border-radius: 5px;
+}
