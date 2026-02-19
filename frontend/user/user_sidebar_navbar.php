@@ -8,7 +8,7 @@
     <ul class="nav flex-column mt-4">
     
         <li class="nav-item">
-    <a id="nav-request" class="nav-link" href="#">
+    <a id="nav-request" class="nav-link" href="user_request.php">
         <i class="fas fa-plus-circle"></i> Request
     </a>
 </li>
@@ -26,4 +26,3 @@
     </div>
 </div>
 
-<?php include "../config/user-footer.php"; ?>
