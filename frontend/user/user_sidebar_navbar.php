@@ -13,7 +13,7 @@
     </a>
 </li>
 <li class="nav-item">
-    <a id="nav-view" class="nav-link" href="#" >
+    <a id="nav-view" class="nav-link" href="user_view_request.php" >
         <i class="fas fa-eye"></i> View Request
     </a>
 </li>

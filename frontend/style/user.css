@@ -37,13 +37,17 @@
 
 .logout-btn {
     border-radius: 5px;
-
 }
 
+.main-wrapper {
+    margin-left: 300px; 
+    min-height: 100vh;
+}
 
-
+.navbar {
+    height: 60px;
+}
 /* user request */
-
 
 .card {
     border-radius: 12px;
@@ -66,4 +70,47 @@
 
 .container {
     max-width: 800px;
+}
+
+/* view request */
+
+.request-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 10px;
+}
+
+.request-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15) !important;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+  
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative; 
+    }
+
+    .main-wrapper {
+        margin-left: 0 !important;
+    }
+
+    .col-md-4 {
+        width: 100%;
+    }
+}
+
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
 }
