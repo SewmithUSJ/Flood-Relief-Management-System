@@ -1,0 +1,41 @@
+.sidebar {
+    width: 300px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../images/background.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar .nav-link {
+    color: white !important;
+    padding: 15px 25px;
+    transition: 0.3s ease;
+}
+
+.sidebar i {
+    margin-right: 12px;
+}
+
+.logout-wrapper {
+    margin-top: auto;
+    padding: 20px;
+}
+
+.main-wrapper {
+    margin-left: 300px;
+    min-height: 100vh;
+}
+
+.navbar {
+    height: 60px;
+}
+
+* {
+    box-sizing: border-box;
+}
