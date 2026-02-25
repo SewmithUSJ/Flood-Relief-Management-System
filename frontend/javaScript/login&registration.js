@@ -1,3 +1,6 @@
+//URL variables
+const registerURL = "../../backend/user.php";
+
 let validPassword = false;
 let validNIC = false;
 
@@ -68,8 +71,29 @@ function validateNIC() {
 }
 
 function registration(){
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const NIC = document.getElementById("NIC").value;
+
+    if(name == "" || email == "" || password == "" || NIC == "" ){
+        alert("All required fields must be filled");
+        return;
+    }
+
     if(validNIC == true && validPassword == true){
-        alert("validation successful");   
+        fetch(registerURL, {
+     
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, password, NIC }),
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                alert(data); 
+        });   
     } else {
         alert("validation failed");
     }
