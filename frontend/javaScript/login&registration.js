@@ -8,13 +8,15 @@ function validatePassword() {
 
     let password = document.getElementById("password").value;
     let message = document.getElementById("passwordMsg");
-
+    
     let hasUpper = 0;
     let hasNumber =  0;
 
     
     if (password.length < 8) {
         message.innerText = "Password must be at least 8 characters";
+        message.classList.remove('text-success');
+        message.classList.add('text-danger');
         return;
     }
 
@@ -34,9 +36,13 @@ function validatePassword() {
 
     if (hasUpper && hasNumber) {
         message.innerText = "Valid Password ";
+        message.classList.add('text-success');
+        message.classList.remove('text-danger');
         validPassword = true;
     } else {
         message.innerText = "Password must contain uppercase letter and number ";
+        message.classList.remove('text-success');
+        message.classList.add('text-danger');
         validPassword = false;
     }
 }
@@ -52,9 +58,13 @@ function validateNIC() {
 
         if (lastChar == 'V' || lastChar == 'v' || lastChar == 'X' || lastChar == 'x') {
             message.innerHTML = "Valid Old NIC";
+            message.classList.add('text-success');
+            message.classList.remove('text-danger');
             validNIC = true;
         } else {
             message.innerHTML = "Invalid NIC";
+            message.classList.remove('text-success');
+            message.classList.add('text-danger');
             validNIC = false;
         }
 
@@ -62,10 +72,14 @@ function validateNIC() {
     
     else if (nic.length == 12) {
         message.innerHTML = "Valid New NIC";
+        message.classList.add('text-success');
+        message.classList.remove('text-danger');
         validNIC = true;
     }
     else {
         message.innerHTML = "Invalid NIC";
+        message.classList.remove('text-success');
+        message.classList.add('text-danger');
         validNIC = false;
     }
 }
