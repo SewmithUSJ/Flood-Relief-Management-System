@@ -1,7 +1,24 @@
 //URL variables
 const requestURL="../../backend/user-request.php";
 
+let path = window.location.pathname;
+let fileName = path.substring(path.lastIndexOf('/') + 1);
+
 const user_id=2;//tempary user id
+
+setActive();
+
+function setActive() {
+    
+    if (fileName == "user_request.php") {
+        document.getElementById("nav-request").classList.add('active');
+       
+    } else {
+         document.getElementById("nav-view").classList.add('active');
+        
+    }
+   
+}
 
 function request() {
     
@@ -17,7 +34,11 @@ function request() {
     const flood_severity= document.getElementById("flood_severity").value;
     const status="Pending";
     
-    fetch(requestURL, {
+    if (user_id == "" || relief_type == "" || district == "" || div_secretariat == "" || gn_division == "" || contact_name == "" || contact_number == "" || address == "" || family_members == "" || flood_severity == ""  ) {
+        alert ("Please enter the required information")
+    } else 
+        
+    {fetch(requestURL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({user_id, relief_type, district, div_secretariat, gn_division, contact_name, contact_number, address, family_members, flood_severity, description,status}),
@@ -26,5 +47,5 @@ function request() {
     .then(data => {
         console.log(data);  
        
-    });
+    });}
 }

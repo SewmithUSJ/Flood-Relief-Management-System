@@ -87,7 +87,7 @@
                         <textarea id="description" class="form-control" name="description" rows="3" placeholder="Add any other details..."></textarea>
                     </div>
 
-                    <button class="btn btn-danger w-100 py-2 fw-bold">SUBMIT REQUEST</button>
+                    <button class="btn btn-danger w-100 py-2 fw-bold" onclick=" request()">SUBMIT REQUEST</button>
 
             </div>
         </div>
