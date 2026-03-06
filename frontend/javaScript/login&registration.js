@@ -1,5 +1,6 @@
 //URL variables
 const registerURL = "../../backend/user.php";
+const loginURL = " ../../backend/login.php ";
 
 let validPassword = false;
 let validNIC = false;
@@ -111,4 +112,31 @@ function registration(){
     } else {
         alert("validation failed");
     }
+}
+
+function login() {
+ 
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  
+  console.log(email+password);
+
+  fetch(loginURL, {
+     
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if (data.message =="success") {
+          console.log("login success");
+        } else {
+           alert(data);
+           console.log(data);
+        }  
+        
+    });
+  
 }
