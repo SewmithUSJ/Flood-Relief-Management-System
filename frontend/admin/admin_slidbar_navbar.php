@@ -24,5 +24,3 @@
         </a>
     </div>
 </div>
-
-<?php include "../config/admin-footer.php"; ?>
