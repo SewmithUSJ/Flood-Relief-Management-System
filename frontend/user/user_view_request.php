@@ -14,6 +14,18 @@
         </div>
     </div>
 </div>
-
+<div id="customModal" class="custom-modal-overlay">
+    <div class="custom-modal-content">
+        <div class="custom-modal-header bg-dark text-white">
+            <h5 class="m-0">Full Request Details</h5>
+            <span class="close-modal" onclick="closeDetails()">&times;</span>
+        </div>
+        <div id="modalData" class="custom-modal-body">
+            </div>
+        <div class="custom-modal-footer">
+            <button class="btn btn-secondary" onclick="closeDetails()">Close</button>
+        </div>
+    </div>
+</div>
 
 <?php include "../config/user-footer.php" ?>

@@ -15,7 +15,7 @@ function setActive() {
        
     } else {
          document.getElementById("nav-view").classList.add('active');
-        
+         allRequestLoad(); 
     }
    
 }
@@ -91,15 +91,15 @@ function userRequest(request) {
                             Status: ${request.status}
                         </span>
                     </p>
-                    <button class="btn btn-outline-dark btn-sm w-100 mb-3" >
+                   <button class="btn btn-outline-dark btn-sm w-100 mb-3" 
+                        onclick="openDetails('${request.request_id}', '${request.district}', '${request.gn_division}', '${request.div_secretariat}', ${request.family_members}, '${request.description}', '${request.contact_number}')">
                         View More Details
                     </button>
-
                     <div class="d-flex gap-2">
                         <button class="btn btn-secondary btn-sm flex-fill" >
                             <i class="fas fa-edit"></i> Update
                         </button>
-                        <button class="btn btn-danger btn-sm flex-fill" >
+                       <button class="btn btn-danger btn-sm flex-fill" onclick="deleteReq('${request.request_id}')">
                             <i class="fas fa-trash"></i> Delete
                         </button>
                     </div>
@@ -108,4 +108,40 @@ function userRequest(request) {
         </div>  
         `;});
     document.getElementById("cards").innerHTML =cards;
+}
+function openDetails( request_id,district,gn_division,div_secretariat,family_members,description,contact_number) {
+    const modal = document.getElementById('customModal');
+    const modalBody = document.getElementById('modalData');
+
+    modalBody.innerHTML = `
+        <div class="mb-2"><strong>Reference ID:</strong> ${request_id}</div>
+        <div class="mb-2"><strong>Location:</strong> ${district} District</div>
+        <div class="mb-2"><strong>Divisional Secretariat:</strong> ${div_secretariat}</div>
+        <div class="mb-2"><strong>GN Division:</strong> ${gn_division}</div>
+        <div class="mb-2"><strong>Contact:</strong> ${contact_number}</div>
+        <div class="mb-2"><strong>Household:</strong> ${family_members} Family Members</div>
+        <hr>
+        <div><strong>Description:</strong> ${description}</div>
+    `;
+
+    modal.style.display = 'flex'; 
+}
+function closeDetails() {
+    document.getElementById('customModal').style.display = 'none';
+}
+function deleteReq(id) {
+    
+    if(confirm("Are you sure you want to permanently delete Request #" + id + "?")) {
+        fetch(requestURL, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
+        })
+        .then(res => res.json())
+        .then(() => {
+            alert("Request " + id + " deleted successfully.");
+            location.reload(); 
+        });
+        
+    }
 }

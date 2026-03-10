@@ -36,8 +36,10 @@ if ($method === "POST") {
         $status           = $data["status"];
         $description      = $data["description"];
 
-        $sql = "INSERT INTO request (user_id,relief_type,district,div_secretariat,gn_division,contact_name,contact_number,address,family_members,flood_severity,status,description	) VALUES
-        ('$user_id','$relief_type','$district','$div_secretariat','$gn_division','$contact_name','$contact_number','$address','$family_members','$flood_severity','$status','$description'	)";
+        $sql = "INSERT INTO request (user_id,relief_type,district,div_secretariat,gn_division,contact_name,contact_number,
+        address,family_members,flood_severity,status,description	) VALUES
+        ('$user_id','$relief_type','$district','$div_secretariat','$gn_division','$contact_name','$contact_number',
+        '$address','$family_members','$flood_severity','$status','$description'	)";
         $stmt = mysqli_query($conn,$sql);
         
         if ($stmt) {
@@ -50,6 +52,21 @@ if ($method === "POST") {
     }else {
         echo json_encode(["status" => "error",
         "message" => "Empty error"]);
+    }
+}
+if ($method === "DELETE") {
+    $data = json_decode(file_get_contents("php://input"), true);
+    $id = $data["id"];
+
+    $sql = "DELETE FROM request WHERE request_id='$id'";
+    $result=mysqli_query($conn,$sql);
+
+    if($result){
+        echo json_encode(["message" => "Request Deleted"]);
+        exit;
+    }else {
+        echo json_encode(["message" => "Error"]);
+        exit;
     }
 }
 ?>
