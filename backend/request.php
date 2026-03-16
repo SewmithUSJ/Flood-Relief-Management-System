@@ -54,6 +54,33 @@ if ($method === "POST") {
         "message" => "Empty error"]);
     }
 }
+if ($method === "PUT") {
+    $data = json_decode(file_get_contents("php://input"), true);
+
+            $request_id       = $data["request_id"];
+            $relief_type      = $data["relief_type"];
+            $district         = $data["district"];
+            $div_secretariat  = $data["div_secretariat"];
+            $gn_division      = $data["gn_division"];
+            $contact_name     = $data["name"];
+            $contact_number   = $data["contact_number"];
+            $address          = $data["address"];
+            $family_members   = $data["family_members"];
+            $flood_severity   = $data["flood_severity"];
+            $description      = $data["description"];
+
+            $sql ="UPDATE request SET relief_type='$relief_type',district='$district',div_secretariat='$div_secretariat',gn_division='$gn_division',contact_name='$contact_name',
+            contact_number='$contact_number',address='$address',family_members='$family_members',flood_severity='$flood_severity',description='$description' WHERE request_id='$request_id'";
+            $result=mysqli_query($conn,$sql);
+
+            if($result){
+                echo json_encode(["message" => "Request Updated"]);
+                exit;
+            }else {
+                echo json_encode(["message" => "Error"]);
+                exit;
+            }
+}
 if ($method === "DELETE") {
     $data = json_decode(file_get_contents("php://input"), true);
     $id = $data["id"];

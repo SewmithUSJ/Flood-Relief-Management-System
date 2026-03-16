@@ -96,7 +96,8 @@ function userRequest(request) {
                         View More Details
                     </button>
                     <div class="d-flex gap-2">
-                        <button class="btn btn-secondary btn-sm flex-fill" >
+                        <button class="btn btn-secondary btn-sm flex-fill"
+                        onclick="loadDetails('${request.relief_type}','${request.flood_severity}','${request.contact_name}','${request.request_id}', '${request.district}', '${request.gn_division}', '${request.div_secretariat}', ${request.family_members}, '${request.description}', '${request.contact_number}','${request.address}')"> 
                             <i class="fas fa-edit"></i> Update
                         </button>
                        <button class="btn btn-danger btn-sm flex-fill" onclick="deleteReq('${request.request_id}')">
@@ -108,6 +109,57 @@ function userRequest(request) {
         </div>  
         `;});
     document.getElementById("cards").innerHTML =cards;
+}
+function loadDetails(relief_type,flood_severity,name,request_id,district,gn_division,div_secretariat,family_members,description,contact_number,address) {
+        const modal = document.getElementById('updateModal');
+        console.log(relief_type);
+        document.getElementById('edit_id').value = request_id;
+        document.getElementById('edit_relief').value = relief_type;
+        document.getElementById('edit_district').value = district;
+        document.getElementById('edit_div_secretariat').value=div_secretariat;
+        document.getElementById('edit_gn_division').value=gn_division;
+        document.getElementById('edit_name').value=name;
+        document.getElementById('edit_contact_number').value=contact_number;
+        document.getElementById('edit_address').value=address;
+        document.getElementById('edit_family_members').value=family_members;
+        document.getElementById('edit_flood_severity').value=flood_severity;
+        document.getElementById('edit_description').value = description;
+
+        modal.classList.remove('d-none');
+        modal.classList.add('d-flex');    
+}
+function closeUpdate() {
+    const modal = document.getElementById('updateModal');
+    modal.classList.add('d-none');
+    modal.classList.remove('d-flex');
+}
+
+function saveUpdate() {
+
+    const request_id = document.getElementById('edit_id').value ;
+    const relief_type = document.getElementById('edit_relief').value ;
+    const district = document.getElementById('edit_district').value ;
+    const div_secretariat = document.getElementById('edit_div_secretariat').value ;
+    const gn_division = document.getElementById('edit_gn_division').value ;
+    const name = document.getElementById('edit_name').value;
+    const contact_number = document.getElementById('edit_contact_number').value ;
+    const address = document.getElementById('edit_address').value;
+    const family_members = document.getElementById('edit_family_members').value;
+    const flood_severity = document.getElementById('edit_flood_severity').value;
+    const description = document.getElementById('edit_description').value ;
+   
+
+    fetch(requestURL, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({request_id,relief_type,district,div_secretariat,gn_division,name,contact_number,address,family_members,flood_severity,description }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        closeUpdate();
+        allRequestLoad();
+      });
 }
 function openDetails( request_id,district,gn_division,div_secretariat,family_members,description,contact_number) {
     const modal = document.getElementById('customModal');
