@@ -132,6 +132,12 @@ function login() {
         console.log(data);
         if (data.message =="success") {
           console.log("login success");
+          if (data.id==1) {
+            window.location.href ="http://localhost/myphp/Flood-Relief-Management-System/frontend/admin/admin_details.php";
+          } else {
+            console.log("fit");
+            window.location.href ="http://localhost/myphp/Flood-Relief-Management-System/frontend/user/user_request.php?id="+ data.id;
+          }
         } else {
            alert(data);
            console.log(data);

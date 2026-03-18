@@ -20,7 +20,7 @@
     </ul>
 
     <div class="logout-wrapper">
-        <a href="logout.php" class="btn btn-danger w-100 logout-btn">
+        <a href="../login&registration/login.html" class="btn btn-danger w-100 logout-btn">
             <i class="fas fa-sign-out-alt"></i> Logout
         </a>
     </div>

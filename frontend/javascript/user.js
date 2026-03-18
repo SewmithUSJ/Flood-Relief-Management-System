@@ -4,7 +4,10 @@ const requestURL="../../backend/user/request.php";
 let path = window.location.pathname;
 let fileName = path.substring(path.lastIndexOf('/') + 1);
 
-const user_id=2;//tempary user id
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+const user_id=urlParams.get('id');
 
 setActive();
 
@@ -18,6 +21,14 @@ function setActive() {
          allRequestLoad(); 
     }
    
+}
+function navbarShift(barName) {
+    
+    if (barName=='request') {
+        window.location.href ="http://localhost/myphp/Flood-Relief-Management-System/frontend/user/user_request.php?id="+ user_id;
+    }else{
+        window.location.href ="http://localhost/myphp/Flood-Relief-Management-System/frontend/user/user_request.php?id="+ user_id;
+    }
 }
 
 function request() {
