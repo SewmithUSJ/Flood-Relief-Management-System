@@ -12,10 +12,10 @@ include "database.php";
 
       $user = mysqli_fetch_assoc($result);
 
-      if ($user && password_verify($password, $user['password'])) {
-      echo json_encode(["message" => "success","id"=>$user['user_id']]);
-      }else{
-      echo json_encode(["message" => "login failed. Try again."]);
-      }
+            if ($user && password_verify($password, $user['password'])) {
+            echo json_encode(["message" => "success","id"=>$user['user_id']]);
+           }else{
+            echo json_encode(["message" => "login failed."]);
+           }
  }
  ?>

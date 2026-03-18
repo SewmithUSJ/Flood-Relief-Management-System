@@ -91,6 +91,7 @@ function registration(){
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const NIC = document.getElementById("NIC").value;
+    const action = "registration";
 
     if(name == "" || email == "" || password == "" || NIC == "" ){
         alert("All required fields must be filled");
@@ -102,7 +103,7 @@ function registration(){
      
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name, email, password, NIC }),
+            body: JSON.stringify({action, name, email, password, NIC }),
             })
             .then(res => res.json())
             .then(data => {
