@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+    body {
+      background-image: url('../images/background.png');
+      background-size: cover;        
+      background-position: center;   
+      background-repeat: no-repeat;  
+    }
+    </style>
+</head>
+<body>
+    <div class="container vh-100 d-flex justify-content-center align-items-center ">
+
+        <div class="card shadow-lg border-0 w-50 bg-transparent">
+
+           <div class="card-header text-center">  
+                <img src="../images/logo.png" alt="alternatetext" class="w-75">
+            </div>
+                   <div class="card-body pl-15 text-primary-subtle text-center fs-4">   
+                        
+                    <p class="fs-3 fw-bold"> Register </p>
+
+                            <input id="name" class="bg-transparent text-dark border-dark rounded" placeholder="Enter Name" type = "text" name = "name" required><br><br>
+
+                            <input id="email" class="bg-transparent text-dark border-dark rounded" placeholder="Enter Email" type = "email" name = "email" required><br><br>
+
+                            <p id="passwordMsg" class="text-danger fs-6 fw-bold"></p>
+                            <input id="password" class="bg-transparent text-dark border-dark rounded"  placeholder="Enter Password" type = "password" name = "password" onkeyup="validatePassword()" required><br><br>
+
+                            <p id="nicMsg" class="text-danger fs-6 fw-bold"></p>
+                            <input id="NIC" class="bg-transparent text-dark border-dark rounded" placeholder="Enter NIC" type = "text" name = "NIC" onkeyup="validateNIC()" required><br><br>
+
+                            <button name = "register"class=" btn bg-dark fs-4 text-light" onclick="registration()">Register</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="../javaScript/login&registration.js"></script>
+</body>
+
+</html>
