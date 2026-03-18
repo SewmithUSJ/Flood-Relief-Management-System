@@ -19,10 +19,10 @@
                         <label class="form-label fw-bold">Type of Relief Needed</label>
                         <select id="relief_type" class="form-select" name="relief_type" required>
                             <option value="" selected disabled>Choose one...</option>
-                            <option value="food">Food</option>
-                            <option value="water">Water</option>
-                            <option value="medicine">Medicine</option>
-                            <option value="shelter">Shelter</option>
+                            <option value="Food">Food</option>
+                            <option value="Water">Water</option>
+                            <option value="Medicine">Medicine</option>
+                            <option value="Shelter">Shelter</option>
                         </select>
                     </div>
 
@@ -76,9 +76,9 @@
                         <label class="form-label fw-bold">Flood Severity Level</label>
                         <select id="flood_severity" name="flood_severity" class="form-select" required>
                             <option value="" selected disabled>Choose one...</option>
-                            <option value="low">Low</option>
-                            <option value="medium">Medium</option>
-                            <option value="high">High</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
                         </select>
                     </div>
 

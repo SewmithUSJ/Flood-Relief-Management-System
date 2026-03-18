@@ -69,7 +69,7 @@
                 </div>
             </div>
             <div class="col-md-2">
-                <div class="stat-card text-center p-3 shadow-sm border bg-light-red" onclick="showSection('high')">
+                <div class="stat-card text-center p-3 shadow-sm border bg-light-red" onclick="showSection('High')">
                     <i class="fas fa-exclamation-triangle fa-2x text-danger mb-2"></i>
                     <h6>High Severity HH</h6>
                     <h3 id="high"></h3>

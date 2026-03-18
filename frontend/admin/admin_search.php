@@ -34,9 +34,9 @@
                     <label class="form-label fw-bold small text-muted">SEVERITY LEVEL</label>
                     <select class="form-select custom-select" id="flood_severity">
                         <option value="All" >Select Severity</option>
-                        <option value="low">Low</option>
-                        <option value="medium">Medium</option>
-                        <option value="high">High</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
                     </select>
                 </div>
 

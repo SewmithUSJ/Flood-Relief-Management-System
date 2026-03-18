@@ -2,7 +2,7 @@
 $host = "localhost"; 
 $user = "root";
 $pass = "";
-$db   = "flood_donation_db";
+$db   = "flood_relief_db";
 
 $conn = mysqli_connect($host, $user, $pass, $db);
 

@@ -1,10 +1,14 @@
 //URL variables
-const requestURL="../../backend/user-request.php";
+const requestURL="../../backend/user/request.php";
+const userURL="../../backend/user/user.php";
 
 let path = window.location.pathname;
 let fileName = path.substring(path.lastIndexOf('/') + 1);
 
-const user_id=2;//tempary user id
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+const user_id=urlParams.get('id');
 
 setActive();
 
@@ -12,12 +16,36 @@ function setActive() {
     
     if (fileName == "user_request.php") {
         document.getElementById("nav-request").classList.add('active');
+        name();
        
     } else {
          document.getElementById("nav-view").classList.add('active');
          allRequestLoad(); 
+         name();
     }
    
+}
+function navbarShift(barName) {
+    
+    if (barName=='request') {
+        window.location.href ="http://localhost/myphp/Flood-Relief-Management-System/frontend/user/user_request.php?id="+ user_id;
+    }else{
+        window.location.href ="http://localhost/myphp/Flood-Relief-Management-System/frontend/user/user_view_request.php?id="+ user_id;
+    }
+}
+
+function name() {
+    const action = "name";
+    fetch(userURL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({action,user_id}),
+    })
+    .then(res => res.json())
+    .then(data => {
+        const user_name = data.name;
+        document.getElementById("user_name").innerHTML=user_name;
+    });
 }
 
 function request() {
@@ -64,9 +92,9 @@ function allRequestLoad() {
 
 function userRequest(request) {
     const severityColor = {
-        high: "bg-danger",
-        medium: "bg-warning text-dark",
-        low: "bg-success"
+        High: "bg-danger",
+        Medium: "bg-warning text-dark",
+        Low: "bg-success"
     };
      const statusColor = {
         Rejected: "bg-danger",

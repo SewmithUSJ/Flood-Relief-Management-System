@@ -1,7 +1,7 @@
 <?php
 session_start();
 header("Content-Type: application/json");
-include "database.php";
+include "../database.php";
 
 $method=$_SERVER["REQUEST_METHOD"];
 
@@ -97,15 +97,4 @@ if ($method === "DELETE") {
     }
 }
 
-if ($method === "GET") {
-    $result = $conn->query("SELECT * FROM request");
-    $requets = [];
-
-    while ($row = $result->fetch_assoc()) {
-        $requets[] = $row;
-    }
-
-    echo json_encode($requets);
-    exit;
-}
 ?>

@@ -23,7 +23,7 @@
     </ul>
 
     <div class="logout-wrapper">
-        <a href="../login&register/login.html" class="btn btn-danger w-100 logout-btn"href="../login&register/login.html">
+        <a href="../login&registration/login.html" class="btn btn-danger w-100 logout-btn"href="../login&register/login.html">
             <i class="fas fa-sign-out-alt"></i> Logout
         </a>
     </div>

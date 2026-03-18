@@ -1,5 +1,5 @@
 
-<script src="../connection/admin.js"></script>
+<script src="../javaScript/admin.js"></script>
 
 </body>
 </html>
