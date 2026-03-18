@@ -106,8 +106,13 @@ function registration(){
             })
             .then(res => res.json())
             .then(data => {
+                if (data.message =="success") {
+                    window.location.href ="http://localhost/myphp/Flood-Relief-Management-System/frontend/login&registration/login.html";
+                } else {
+                alert("Registration failed. Try again.");
                 console.log(data);
-                alert(data); 
+                }
+                 
         });   
     } else {
         alert("validation failed");
@@ -139,7 +144,7 @@ function login() {
             window.location.href ="http://localhost/myphp/Flood-Relief-Management-System/frontend/user/user_request.php?id="+ data.id;
           }
         } else {
-           alert(data);
+           alert("Loging failed. Try again.");
            console.log(data);
         }  
         
