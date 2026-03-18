@@ -1,5 +1,5 @@
 //URL variables
-const registerURL = "../../backend/user.php";
+const registerURL = "../../backend/user/user.php";
 const loginURL = " ../../backend/login.php ";
 
 let validPassword = false;

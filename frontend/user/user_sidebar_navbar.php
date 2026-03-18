@@ -8,12 +8,12 @@
     <ul class="nav flex-column mt-4">
     
         <li class="nav-item">
-    <a id="nav-request" class="nav-link" href="user_request.php">
+    <a id="nav-request" class="nav-link"  onclick="navbarShift('request'); return false;">
         <i class="fas fa-plus-circle"></i> Request
     </a>
 </li>
 <li class="nav-item">
-    <a id="nav-view" class="nav-link" href="user_view_request.php" >
+    <a id="nav-view" class="nav-link" onclick="navbarShift('view'); return false;">
         <i class="fas fa-eye"></i> View Request
     </a>
 </li>

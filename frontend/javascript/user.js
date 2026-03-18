@@ -1,5 +1,5 @@
 //URL variables
-const requestURL="../../backend/user-request.php";
+const requestURL="../../backend/user/request.php";
 
 let path = window.location.pathname;
 let fileName = path.substring(path.lastIndexOf('/') + 1);
