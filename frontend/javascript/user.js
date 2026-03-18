@@ -1,5 +1,6 @@
 //URL variables
 const requestURL="../../backend/user/request.php";
+const userURL="../../backend/user/user.php";
 
 let path = window.location.pathname;
 let fileName = path.substring(path.lastIndexOf('/') + 1);
@@ -15,6 +16,7 @@ function setActive() {
     
     if (fileName == "user_request.php") {
         document.getElementById("nav-request").classList.add('active');
+        name();
        
     } else {
          document.getElementById("nav-view").classList.add('active');
@@ -29,6 +31,20 @@ function navbarShift(barName) {
     }else{
         window.location.href ="http://localhost/myphp/Flood-Relief-Management-System/frontend/user/user_request.php?id="+ user_id;
     }
+}
+
+function name() {
+    const action = "name";
+    fetch(userURL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({action,user_id}),
+    })
+    .then(res => res.json())
+    .then(data => {
+        const user_name = data.name;
+        document.getElementById("user_name").innerHTML=user_name;
+    });
 }
 
 function request() {

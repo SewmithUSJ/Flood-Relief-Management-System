@@ -8,6 +8,7 @@ $method=$_SERVER["REQUEST_METHOD"];
 if ($method === "POST") {
         $data = json_decode(file_get_contents("php://input"), true);
 
+         if ($data['action'] == "registration") {
          $name = $data['name'];
          $email = $data['email'];
          $password = $data['password'];
@@ -32,6 +33,13 @@ if ($method === "POST") {
                 
                 echo json_encode(["message" => "failed.","error" => mysqli_error($conn)]);
             }
+        }else if($data['action'] == "name"){
+            $id = $data['user_id'];
+            $result = $conn->query("SELECT name FROM user WHERE user_id='$id'");
+            $name = $result->fetch_assoc();
+            echo json_encode($name);
+            exit;
+        }
 
     }
 ?>
