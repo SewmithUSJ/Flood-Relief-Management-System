@@ -15,8 +15,11 @@ function setActive() {
         viewMembers();
         viewReq();
        
-    } else {
+    } else if (fileName == "admin_summary.php"){
          document.getElementById("admin-summary").classList.add('active');
+    }else{
+        document.getElementById("admin-search").classList.add('active');
+        searchReq();
     }
    
 }
@@ -400,4 +403,69 @@ function deleteUser(id) {
         });
         
     }
+}
+
+//search
+function searchReq() {
+ 
+    const district = document.getElementById('district').value;
+    const flood_severity = document.getElementById('flood_severity').value;
+    const relief_type = document.getElementById('relief_type').value;
+
+    let title = "";
+
+    if (district == "All" && flood_severity == "All" && relief_type == "All") {
+        title = "All request";
+    }else if (district != "All" && flood_severity == "All" && relief_type == "All") {
+        title = district+" district request ";
+    } else if (district == "All" && flood_severity != "All" && relief_type == "All") {
+        title = flood_severity+" sevirity level request";
+    }else if(district == "All" && flood_severity == "All" && flood_severity != "All"){
+        title = relief_type+" requests";
+    }else if(district != "All" && flood_severity != "All" && relief_type == "All"){
+        title = district+" district "+flood_severity+ " sevirity level request  ";
+    }else if(district != "All" && flood_severity == "All" && relief_type != "All"){
+        title = district+" district "+relief_type+"  request  ";
+    }else if(district == "All" && flood_severity != "All" && relief_type != "All"){
+        title = flood_severity+" sevirity level "+relief_type+" request  ";
+    }else {
+        title = district+" district "+flood_severity+" sevirity level "+relief_type+" request  " ;
+    }
+     
+    let table ="";
+    request().then(data => {
+    data.forEach(request => {
+        if (
+            (district === "All" || request.district === district) &&
+            (flood_severity === "All" || request.flood_severity === flood_severity) &&
+            (relief_type === "All" || request.relief_type === relief_type)
+        ) {
+            table += `
+             <tr>
+                <td>M0${request.user_id} </td>
+                <td>${request.district} </td>
+                <td>${request.relief_type}</td>
+                <td>
+                    <span class="badge ${severityColor[request.flood_severity]}">
+                        ${request.flood_severity}
+                    </span></br>
+                </td>
+                <td>
+                    <span class="badge ${statusColor[request.status]}">
+                        ${request.status}
+                    </span>
+                </td>
+                <td>
+                    <button class="btn btn-outline-dark btn-sm" onclick="openDetails('${request.request_id}','${request.contact_name}','${request.address}','${request.contact_number}',' ${request.family_members}','${request.description}')">View More Details</button>
+                </td>
+            </tr>
+        
+        `;
+        }
+    });
+    document.getElementById('relief-table-body').innerHTML=table;
+    });
+
+    document.getElementById('request-table-title').innerHTML=title;
+    
 }
