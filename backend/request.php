@@ -96,4 +96,16 @@ if ($method === "DELETE") {
         exit;
     }
 }
+
+if ($method === "GET") {
+    $result = $conn->query("SELECT * FROM request");
+    $requets = [];
+
+    while ($row = $result->fetch_assoc()) {
+        $requets[] = $row;
+    }
+
+    echo json_encode($requets);
+    exit;
+}
 ?>
