@@ -39,10 +39,10 @@
                 <div class="mb-3">
                 <label class="form-label">Relief Type</label>
                 <select id="edit_relief" class="form-select">
-                    <option value="food">Food</option>
-                    <option value="water">Water</option>
-                    <option value="medicine">Medicine</option>
-                    <option value="shelter">Shelter</option>
+                    <option value="Food">Food</option>
+                    <option value="Water">Water</option>
+                    <option value="Medicine">Medicine</option>
+                    <option value="Shelter">Shelter</option>
                 </select>
                 </div>
                 <div class="mb-3">
@@ -82,9 +82,9 @@
                 <div class="mb-3">
                 <label class="form-label">Flood Severity Level</label>
                 <select id="edit_flood_severity" class="form-select">
-                    <option value="low">Low</option>
-                    <option value="medium">Medium</option>
-                    <option value="high">High</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
                 </select>
                 </div>
                 <div class="mb-3">

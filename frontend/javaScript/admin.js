@@ -29,9 +29,9 @@ function setActive() {
 
 //badge colors
 const severityColor = {
-    high: "bg-danger",
-    medium: "bg-warning text-dark",
-    low: "bg-success"
+    High: "bg-danger",
+    Medium: "bg-warning text-dark",
+    Low: "bg-success"
 };
 const statusColor = {
     Rejected: "bg-danger",
@@ -222,7 +222,7 @@ function calculation(requests) {
         if (request.relief_type==='Shelter') {
             shelter +=1;
         }
-        if (request.flood_severity==='high') {
+        if (request.flood_severity==='High') {
             high_water +=1;
         }
     })
@@ -523,10 +523,10 @@ function showDistrictDetails(district) {
     document.getElementById('district-detail-card').classList.remove('d-none');
     document.getElementById('dist-detail-title').innerText = district + " - Relief Breakdown";
     let counts = {
-        Food :{ high: 0, medium: 0, low: 0 },
-        Water :{ high: 0, medium: 0, low: 0 },
-        Medicine :{ high: 0, medium: 0, low: 0 },
-        Shelter :{ high: 0, medium: 0, low: 0 }
+        Food :{ High: 0, Medium: 0, Low: 0 },
+        Water :{ High: 0, Medium: 0, Low: 0 },
+        Medicine :{ High: 0, Medium: 0, Low: 0 },
+        Shelter :{ High: 0, Medium: 0, Low: 0 }
     };
 
      fetch(requestURL)
@@ -538,34 +538,34 @@ function showDistrictDetails(district) {
         if(req.district == district){
 
             let relief = req.relief_type;       
-            let severity = req.flood_severity.toLowerCase(); 
+            let severity = req.flood_severity; 
             
             counts[relief][severity] += 1;
 
         }
 
     });
-
+    
         document.getElementById("district-card").innerHTML = `
             <tr><td rowspan="3" class="fw-bold align-middle">Food</td>
-            <td>High</td><td>${counts['Food']?.['high'] || 0}</td></tr>
-            <tr><td>Medium</td><td>${counts['Food']?.['medium'] || 0}</td></tr>
-            <tr><td>Low</td><td>${counts['Food']?.['low'] || 0}</td></tr>
+            <td>High</td><td>${counts['Food']['High'] || 0}</td></tr>
+            <tr><td>Medium</td><td>${counts['Food']['Medium'] || 0}</td></tr>
+            <tr><td>Low</td><td>${counts['Food']['Low'] || 0}</td></tr>
 
             <tr><td rowspan="3" class="fw-bold align-middle">Water</td>
-            <td>High</td><td>${counts['Water']?.['high'] || 0}</td></tr>
-            <tr><td>Medium</td><td>${counts['Water']?.['medium'] || 0}</td></tr>
-            <tr><td>Low</td><td>${counts['Water']?.['low'] || 0}</td></tr>
+            <td>High</td><td>${counts['Water']['High'] || 0}</td></tr>
+            <tr><td>Medium</td><td>${counts['Water']['Medium'] || 0}</td></tr>
+            <tr><td>Low</td><td>${counts['Water']['Low'] || 0}</td></tr>
 
             <tr><td rowspan="3" class="fw-bold align-middle">Medicine</td>
-            <td>High</td><td>${counts['Medicine']?.['high'] || 0}</td></tr>
-            <tr><td>Medium</td><td>${counts['Medicine']?.['medium'] || 0}</td></tr>
-            <tr><td>Low</td><td>${counts['Medicine']?.['low'] || 0}</td></tr>
+            <td>High</td><td>${counts['Medicine']['High'] || 0}</td></tr>
+            <tr><td>Medium</td><td>${counts['Medicine']['Medium'] || 0}</td></tr>
+            <tr><td>Low</td><td>${counts['Medicine']['Low'] || 0}</td></tr>
 
             <tr><td rowspan="3" class="fw-bold align-middle">Shelter</td>
-            <td>High</td><td>${counts['Shelter']?.['high'] || 0}</td></tr>
-            <tr><td>Medium</td><td>${counts['Shelter']?.['medium'] || 0}</td></tr>
-            <tr><td>Low</td><td>${counts['Shelter']?.['low'] || 0}</td></tr>
+            <td>High</td><td>${counts['Shelter']['High'] || 0}</td></tr>
+            <tr><td>Medium</td><td>${counts['Shelter']['Medium'] || 0}</td></tr>
+            <tr><td>Low</td><td>${counts['Shelter']['Low'] || 0}</td></tr>
         `;
     });
 
@@ -592,7 +592,7 @@ function showReliefDetails(type) {
     document.getElementById('relief-main-card').classList.add('d-none');
     document.getElementById('relief-detail-card').classList.remove('d-none');
     document.getElementById('relief-detail-title').innerText = type + " - Severity Analysis";
-    let counts = {'high' : 0,'medium': 0, 'low' : 0};
+    let counts = {'High' : 0,'Medium': 0, 'Low' : 0};
      fetch(requestURL)
         .then(res => res.json())
         .then(data => {
@@ -602,15 +602,15 @@ function showReliefDetails(type) {
             }
         });
         document.getElementById("relief-card").innerHTML = `
-        <tr><td>High</td><td>Critical</td><td>${counts['high']}</td></tr>
-        <tr><td>Medium</td><td>Moderate</td><td>${counts['medium']}</td></tr>
-        <tr><td>Low</td><td>Stable</td><td>${counts['low']}</td></tr>
+        <tr><td>High</td><td>Critical</td><td>${counts['High']}</td></tr>
+        <tr><td>Medium</td><td>Moderate</td><td>${counts['Medium']}</td></tr>
+        <tr><td>Low</td><td>Stable</td><td>${counts['Low']}</td></tr>
         `;
     });
 }
 
 function calSeverityLevel() {
-    let counts = {'high' : 0,'medium': 0, 'low' : 0};
+    let counts = {'High' : 0,'Medium': 0, 'Low' : 0};
      fetch(requestURL)
         .then(res => res.json())
         .then(data => {
@@ -618,9 +618,9 @@ function calSeverityLevel() {
             counts[req.flood_severity] += 1;
         });
         document.getElementById("severity-table").innerHTML = `
-        <tr><td><span class="badge bg-danger">High</span></td><td>Critical</td><td>${counts['high']}</td></tr>
-        <tr><td><span class="badge bg-warning text-dark">Medium</span></td><td>Moderately Affected</td><td>${counts['medium']}</td></tr>
-        <tr><td><span class="badge bg-success">Low</span></td><td>Monitoring Required</td><td>${counts['low']}</td></tr>
+        <tr><td><span class="badge bg-danger">High</span></td><td>Critical</td><td>${counts['High']}</td></tr>
+        <tr><td><span class="badge bg-warning text-dark">Medium</span></td><td>Moderately Affected</td><td>${counts['Medium']}</td></tr>
+        <tr><td><span class="badge bg-success">Low</span></td><td>Monitoring Required</td><td>${counts['Low']}</td></tr>
         `;
     });
 }

@@ -21,6 +21,7 @@ function setActive() {
     } else {
          document.getElementById("nav-view").classList.add('active');
          allRequestLoad(); 
+         name();
     }
    
 }
@@ -29,7 +30,7 @@ function navbarShift(barName) {
     if (barName=='request') {
         window.location.href ="http://localhost/myphp/Flood-Relief-Management-System/frontend/user/user_request.php?id="+ user_id;
     }else{
-        window.location.href ="http://localhost/myphp/Flood-Relief-Management-System/frontend/user/user_request.php?id="+ user_id;
+        window.location.href ="http://localhost/myphp/Flood-Relief-Management-System/frontend/user/user_view_request.php?id="+ user_id;
     }
 }
 
@@ -91,9 +92,9 @@ function allRequestLoad() {
 
 function userRequest(request) {
     const severityColor = {
-        high: "bg-danger",
-        medium: "bg-warning text-dark",
-        low: "bg-success"
+        High: "bg-danger",
+        Medium: "bg-warning text-dark",
+        Low: "bg-success"
     };
      const statusColor = {
         Rejected: "bg-danger",
